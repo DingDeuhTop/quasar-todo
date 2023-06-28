@@ -7,6 +7,7 @@ const routes = [
     children: [
       // { path: "", component: () => import("pages/IndexPage.vue") },
       { path: "", component: () => import("pages/IndexHome.vue") },
+      { path: "/product", component: () => import("pages/productPage.vue") },
       { path: "auth/login", component: () => import("pages/logIn.vue") },
       { path: "auth/register", component: () => import("pages/register.vue") },
     ],
@@ -20,13 +21,13 @@ const routes = [
   },
 ];
 
-Router.beforeEach(async (to, from, next) => {
-  const auth = to.meta.requiresAuth;
-  if (auth && !(await firebase.getCurrentUser())) {
-    next("/");
-  } else {
-    next();
-  }
-});
+// Router.beforeEach(async (to, from, next) => {
+//   const auth = to.meta.requiresAuth;
+//   if (auth && !(await firebase.getCurrentUser())) {
+//     next("/");
+//   } else {
+//     next();
+//   }
+// });
 
 export default routes;
